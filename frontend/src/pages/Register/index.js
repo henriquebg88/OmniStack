@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -11,18 +11,21 @@ export default function Register() {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [Whatsapp, setWhatsapp] = useState('');
+    const [whatsapp, setWhatsapp] = useState('');
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
+
+    const history = useHistory();
 
     async function handleRegister(e) {
         e.preventDefault();
 
-        const data = {name, email, Whatsapp, city, uf};
+        const data = {name, email, whatsapp, city, uf};
 
         try {
-            const response = await api.post('/ongs', data);
+            const response = await api.post('ongs', data);
             alert(`Seu id: ${response.data.id}`);
+            history.push('/');
         } catch (error) {
             alert("Erro no cadstro");
         }
@@ -56,7 +59,7 @@ export default function Register() {
                     />
                     <input 
                         type="text" placeholder="Whatsapp" 
-                        value={Whatsapp} 
+                        value={whatsapp} 
                         onChange={e => setWhatsapp(e.target.value)}
                     />
 
