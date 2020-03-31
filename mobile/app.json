@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "slug": "mobile",
+    "name": "Be the hero",
+    "slug": "BeTheHero_Mobile",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
